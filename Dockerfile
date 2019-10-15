@@ -3,11 +3,14 @@ FROM ubuntu:18.04
 RUN apt update && \
     apt-get install -y wget && \
     apt-get install -y gnupg2
+
 # 1. Install CUDA Toolkit 10
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
-RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && \
-    dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb && \
-    apt install -y cuda
+RUN  apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && $
+RUN dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
+RUN apt update
+RUN apt install -y cuda
+
 # 2. Install CuDNN 7 and NCCL 2
 RUN wget https://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1804/x86_64/nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb
 RUN dpkg -i nvidia-machine-learning-repo-ubuntu1804_1.0.0-1_amd64.deb && \
