@@ -6,7 +6,7 @@ RUN apt update && \
 
 # 1. Install CUDA Toolkit 10
 RUN wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
-RUN  apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && $
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
 RUN dpkg -i cuda-repo-ubuntu1804_10.1.243-1_amd64.deb
 RUN apt update
 RUN apt install -y cuda
