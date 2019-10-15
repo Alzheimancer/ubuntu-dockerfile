@@ -32,17 +32,16 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=10.1 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411"
 
-
-RUN apt-get -y install build-essential cmake unzip pkg-config
-RUN apt-get -y install libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
-RUN apt-get -y install libjpeg-dev libpng-dev libtiff-dev
-RUN apt-get -y install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
-RUN apt-get -y install libxvidcore-dev libx264-dev
-RUN apt-get -y install libgtk-3-dev
-RUN apt-get -y install libopenblas-dev libatlas-base-dev liblapack-dev gfortran
-RUN apt-get -y install libhdf5-serial-dev
-RUN apt-get -y install python3-dev python3-tk python-imaging-tk
-RUN apt-get -y install ffmpeg
+RUN apt-get install build-essential cmake unzip pkg-config
+RUN apt-get install libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
+RUN apt-get install libjpeg-dev libpng-dev libtiff-dev
+RUN apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
+RUN apt-get install libxvidcore-dev libx264-dev
+RUN apt-get install libgtk-3-dev
+RUN apt-get install libopenblas-dev libatlas-base-dev liblapack-dev gfortran
+RUN apt-get install libhdf5-serial-dev
+RUN apt-get install python3-dev python3-tk python-imaging-tk
+RUN apt-get install ffmpeg
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py
