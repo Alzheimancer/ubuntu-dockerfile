@@ -17,6 +17,16 @@ ENV CUDA_PKG_VERSION 10-1=$CUDA_VERSION-1
 RUN apt-get update && apt-get install -y --no-install-recommends \
         cuda-cudart-$CUDA_PKG_VERSION \
 cuda-compat-10-1 && \
+build-essential cmake unzip pkg-config && \
+libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev && \
+libjpeg-dev libpng-dev libtiff-dev && \
+libavcodec-dev libavformat-dev libswscale-dev libv4l-dev && \
+libxvidcore-dev libx264-dev && \
+libgtk-3-dev && \
+libopenblas-dev libatlas-base-dev liblapack-dev gfortran && \
+libhdf5-serial-dev && \
+python3-dev python3-tk python-imaging-tk && \
+ffmpeg && \
 ln -s cuda-10.1 /usr/local/cuda && \
     rm -rf /var/lib/apt/lists/*
 
@@ -32,16 +42,6 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=10.1 brand=tesla,driver>=384,driver<385 brand=tesla,driver>=396,driver<397 brand=tesla,driver>=410,driver<411"
 
-RUN apt-get install build-essential cmake unzip pkg-config
-RUN apt-get install libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev
-RUN apt-get install libjpeg-dev libpng-dev libtiff-dev
-RUN apt-get install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev
-RUN apt-get install libxvidcore-dev libx264-dev
-RUN apt-get install libgtk-3-dev
-RUN apt-get install libopenblas-dev libatlas-base-dev liblapack-dev gfortran
-RUN apt-get install libhdf5-serial-dev
-RUN apt-get install python3-dev python3-tk python-imaging-tk
-RUN apt-get install ffmpeg
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python3 get-pip.py
