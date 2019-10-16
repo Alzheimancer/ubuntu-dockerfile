@@ -86,16 +86,16 @@ RUN pip install --no-cache-dir -r requirements.txt
 WORKDIR /
 ENV	OPENCV_VERSION="3.4.7"
 
-RUN	wget -O opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
-RUN	wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
+RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
+RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
 
-RUN	unzip opencv.zip && \
+RUN unzip opencv.zip && \
 	mv opencv-${OPENCV_VERSION} opencv
 
 RUN	unzip opencv_contrib.zip && \
 	mv opencv_contrib-${OPENCV_VERSION} opencv_contrib
 
-RUN	ls -la && \
+RUN ls -la && \
 	cd opencv && \
 	mkdir build && \ 
 	cd build && \
