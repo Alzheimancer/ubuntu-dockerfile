@@ -65,6 +65,7 @@ RUN apt-get update && apt-get install -y \
 	python3-dev \
 	python3-tk \
 	python-imaging-tk \
+	nodejs \
 	ffmpeg
 
 RUN wget https://bootstrap.pypa.io/get-pip.py
