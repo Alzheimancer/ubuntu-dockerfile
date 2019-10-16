@@ -118,8 +118,7 @@ RUN ls -la && \
 # RUN ldconfig
 # RUN pkg-config --modversion opencv
 
-RUN cd /usr/local/lib/python3.6/site-packages/cv2/python-3.6
-RUN mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.opencv${OPENCV_VERSION}.so
-RUN cd ~/.virtualenvs/dl4cv/lib/python3.6/site-packages/
-RUN ln -s /usr/local/lib/python3.6/site-packages/cv2/python-3.6/cv2.opencv3.4.7.so cv2.so
+RUN ln -s \
+  /usr/local/lib/python3.6/site-packages/cv2/python-3.6/cv2.cpython-36m-x86_64-linux-gnu.so \
+  /usr/local/lib/python3.6/site-packages/cv2.so
 RUN echo "If everything worked fine, reboot now."
