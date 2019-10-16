@@ -106,9 +106,8 @@ RUN cd /opencv && \
 	-D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \
 	-D PYTHON_EXECUTABLE=$(which python3) \
 	-D OPENCV_ENABLE_NONFREE=ON \
-	-D BUILD_EXAMPLES=ON ..
-
-RUN make -j4 && \
+	-D BUILD_EXAMPLES=ON .. && \
+	make -j4 && \
 	make install && \
 	rm /opencv.zip && \
     rm /opencv_contrib.zip && \
