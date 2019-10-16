@@ -104,7 +104,7 @@ RUN unzip opencv_contrib.zip && \
 RUN ls -la && \
 	cd opencv && \
 	mkdir build && \ 
-    cd build && \
+	cd build && \
 	cmake -D CMAKE_BUILD_TYPE=RELEASE \
 	-D CMAKE_INSTALL_PREFIX=/usr/local \
 	-D INSTALL_PYTHON_EXAMPLES=ON \
@@ -113,9 +113,9 @@ RUN ls -la && \
 	-D PYTHON_EXECUTABLE=~/.virtualenvs/dl4cv/bin/python \
 	-D OPENCV_ENABLE_NONFREE=ON \
 	-D BUILD_EXAMPLES=ON .. && \
-    make -j4 && \
-    make install && \ 
-    ldconfig && \ 
+	make -j4 && \
+	make install && \ 
+	ldconfig && \ 
 	pkg-config --modversion opencv
 
 # RUN make -j4
