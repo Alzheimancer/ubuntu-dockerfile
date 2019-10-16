@@ -93,7 +93,7 @@ RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/
 RUN unzip opencv.zip && \
 	mv opencv-${OPENCV_VERSION} opencv
 
-RUN	unzip opencv_contrib.zip && \
+RUN unzip opencv_contrib.zip && \
 	mv opencv_contrib-${OPENCV_VERSION} opencv_contrib
 
 RUN cd /opencv && \
