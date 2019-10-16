@@ -34,10 +34,10 @@ ENV NVIDIA_REQUIRE_CUDA "cuda>=10.1 brand=tesla,driver>=384,driver<385 brand=tes
 
 #############################################################################################
 # Various Python and C/build deps
-ARG DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Bangkok
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get update && apt-get install -y \
+ARG	DEBIAN_FRONTEND=noninteractive
+ENV	TZ=Asia/Bangkok
+RUN	ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN	apt-get update && apt-get install -y \
 	wget \
 	build-essential \
 	cmake \ 
@@ -67,15 +67,15 @@ RUN apt-get update && apt-get install -y \
 	python-imaging-tk \
 	ffmpeg
 
-RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python3 get-pip.py
+RUN	wget https://bootstrap.pypa.io/get-pip.py
+RUN	python3 get-pip.py
 
 # RUN pip install virtualenv virtualenvwrapper
-RUN rm -rf ~/get-pip.py ~/.cache/pip
+RUN	rm -rf ~/get-pip.py ~/.cache/pip
 
-COPY requirements.txt /opt/app/requirements.txt
-WORKDIR /opt/app
-RUN pip install --no-cache-dir -r requirements.txt
+COPY	requirements.txt /opt/app/requirements.txt
+WORKDIR	/opt/app
+RUN	pip install --no-cache-dir -r requirements.txt
 
 # virtualenv and virtualenvwrapper
 # RUN echo "export WORKON_HOME=$HOME/.virtualenvs" >> $HOME/.bashrc
@@ -90,18 +90,18 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Start installing OPENCV3
 WORKDIR /
-ENV OPENCV_VERSION="3.4.7"
+ENV	OPENCV_VERSION="3.4.7"
 
-RUN wget -O opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
-RUN wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
+RUN	wget -O opencv.zip https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip
+RUN	wget -O opencv_contrib.zip https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip
 
-RUN unzip opencv.zip && \
+RUN	unzip opencv.zip && \
 	mv opencv-${OPENCV_VERSION} opencv
 
-RUN unzip opencv_contrib.zip && \
+RUN	unzip opencv_contrib.zip && \
 	mv opencv_contrib-${OPENCV_VERSION} opencv_contrib
 
-RUN ls -la && \
+RUN	ls -la && \
 	cd opencv && \
 	mkdir build && \ 
 	cd build && \
@@ -123,8 +123,8 @@ RUN ls -la && \
 # RUN ldconfig
 # RUN pkg-config --modversion opencv
 
-RUN cd /usr/local/lib/python3.6/site-packages/cv2/python-3.6
-RUN mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.opencv${OPENCV_VERSION}.so
-RUN cd ~/.virtualenvs/dl4cv/lib/python3.6/site-packages/
-RUN ln -s /usr/local/lib/python3.6/site-packages/cv2/python-3.6/cv2.opencv3.4.7.so cv2.so
-RUN echo "If everything worked fine, reboot now."
+RUN	cd /usr/local/lib/python3.6/site-packages/cv2/python-3.6
+RUN	mv cv2.cpython-36m-x86_64-linux-gnu.so cv2.opencv${OPENCV_VERSION}.so
+RUN	cd ~/.virtualenvs/dl4cv/lib/python3.6/site-packages/
+RUN	ln -s /usr/local/lib/python3.6/site-packages/cv2/python-3.6/cv2.opencv3.4.7.so cv2.so
+RUN	echo "If everything worked fine, reboot now."
